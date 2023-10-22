@@ -77,7 +77,7 @@ CREATE INDEX FK_1 ON Teacher ("ID");
 
 -- ************************************** Transaction
 CREATE TABLE Transaction (
-    "ID" integer NOT NULL,
+    "ID" uuid NOT NULL,
     ID_User varchar(9) NOT NULL,
     TYPE varchar(50) NOT NULL,
     amount integer NOT NULL,
@@ -141,14 +141,13 @@ CREATE INDEX FK_1 ON GroupParticipation ("group");
 
 CREATE INDEX FK_2 ON GroupParticipation (student);
 
--- ************************************** Reservation
 CREATE TABLE Reservation (
-    "ID" integer NOT NULL,
+    "ID" uuid NOT NULL,
     "user" varchar(9) NOT NULL,
-    mealPlan integer NOT NULL,
     restaurant varchar(50) NOT NULL,
     rate integer NULL,
-    CONSTRAINT PK_1 PRIMARY KEY ("ID", "user"),
+    mealPlan integer NOT NULL,
+    CONSTRAINT PK_1 PRIMARY KEY ("ID"),
     CONSTRAINT FK_11 FOREIGN KEY (restaurant) REFERENCES Restaurant (name),
     CONSTRAINT FK_12 FOREIGN KEY (mealPlan) REFERENCES MealPlan ("ID"),
     CONSTRAINT FK_13 FOREIGN KEY ("user") REFERENCES "User" ("ID")
