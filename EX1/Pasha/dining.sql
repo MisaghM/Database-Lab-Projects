@@ -103,10 +103,11 @@ CREATE INDEX FK_1 ON TemporaryCode (student);
 
 -- ************************************** CreditTransfer
 CREATE TABLE CreditTransfer (
+    "ID" integer NOT NULL,
     src varchar(9) NOT NULL,
     dst varchar(9) NOT NULL,
     amount integer NOT NULL,
-    CONSTRAINT PK_1 PRIMARY KEY (src, dst),
+    CONSTRAINT PK_1 PRIMARY KEY ("ID"),
     CONSTRAINT FK_2 FOREIGN KEY (src) REFERENCES "User" ("ID"),
     CONSTRAINT FK_3 FOREIGN KEY (dst) REFERENCES "User" ("ID")
 );
