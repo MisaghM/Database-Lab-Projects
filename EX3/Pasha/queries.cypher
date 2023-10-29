@@ -30,19 +30,16 @@ RETURN a,b,p
 
 // Neo4j - Create an Index using Cypher
 CREATE INDEX // Different from the tutorial
-FOR (a:Artist)
+FOR (a:Album)
 ON (a.Name)
 
 :schema
 
 MATCH (a:Album {Name: "Somewhere in Time"})
-USING INDEX a:Album(Name) // this index does not exist and the previous part should be on Album instead of Artist
+USING INDEX a:Album(Name)
 RETURN a
 
 // Neo4j - Create a Constraint using Cypher
-// creating a unique constraint leads to index creation
-// as a result, the index should be removed first
-DROP INDEX index_a1f93381
 
 CREATE CONSTRAINT FOR (a:Artist)
 REQUIRE a.Name IS UNIQUE
@@ -100,10 +97,6 @@ CALL { // different from the tutorial
 IN TRANSACTIONS OF 800 ROWS
 
 // Neo4j - Drop an Index using Cypher
-CREATE INDEX // should be done as it doesn't exist
-FOR (a:Album)
-ON (a.Name)
-
 DROP INDEX index_67e06f58 // different from the tutorial
 
 :schema
