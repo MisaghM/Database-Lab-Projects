@@ -4,7 +4,7 @@ FROM locations
 WHERE location_id IN (
     SELECT d.location_id
     FROM employees
-        INNER JOIN departments d on d.department_id = employees.department_id
+        INNER JOIN departments d ON d.department_id = employees.department_id
     GROUP BY d.location_id
     HAVING COUNT(*) < 2
 );
@@ -54,7 +54,7 @@ LIMIT 5;
 -- Q7
 SELECT d.department_id, d.department_name, COUNT(*) AS employee_count
 FROM employees e
-    INNER JOIN departments d on d.department_id = e.department_id
+    INNER JOIN departments d ON d.department_id = e.department_id
 GROUP BY d.department_id;
 
 -- Q8
